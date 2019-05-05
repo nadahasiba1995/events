@@ -1,0 +1,243 @@
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+</script>
+<style>
+  .card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 10px auto;
+
+  }
+
+  .card-body{padding: 10px;}
+
+  .sca-widget{
+    width: 300px;
+    margin: auto
+
+  }
+  .list-inline{
+    margin-top:5px;
+  }
+  img.img-thumbnail{
+    width: 80px;
+    height: 120px;
+    margin:5px 0 5px 0;
+  }
+
+  .card-header{
+    padding: 10px;
+    background-color:#f8d030;
+    color: white;
+    direction: rtl;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #card-events{ background-color: #52a45d;}
+  #card-news{color: black;}
+
+  .modal-header .close{
+    margin-top: -10px !important; 
+  }
+
+  .carousel-caption{
+    position: relative;
+    background-color: #c3c3c3;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    font-size: 24px;
+    bottom: 0;
+    top: 0;
+    padding: 10px;
+
+  }
+  </style>
+      <div class="sca-widget">
+	 
+         <div align="center">    
+            
+ 
+<div class="card"   style="width: 100%;">
+    <div class="card-header" id="card-events">أرشيف الفعاليات</div>
+
+   <div class="card-body">
+      <img class="card-img-top" src="ourevents.png" width="80%" alt="Card image cap">
+
+      <ul class="list-inline events">
+    </ul>
+  </div>
+</div>      
+
+
+<div class="card" style="width: 100%;">
+    <div class="card-header" id="card-news">أرشيف الأخبار</div>
+
+   <div class="card-body">
+      <img class="card-img-top" src="scanews.png" width="80%" alt="Card image cap">
+
+      <ul class="list-inline news">
+    </ul>
+  </div>
+</div>  
+
+
+        <!--modal body-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content" style="width:635px;">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" title="Close">
+<span class="glyphicon glyphicon-remove"></span></button>
+</div>
+<div class="modal-body">
+
+ <!-- carousel body-->
+<div id="myGallery" class="carousel slide" data-interval="false">
+<div class="carousel-inner"></div>
+
+<!-- Previous and Next buttons-->
+<a class="left carousel-control" href="#myGallery" role="button" data-slide="prev">
+<span class="glyphicon glyphicon-chevron-left"></span></a> 
+<a class="right carousel-control" href="#myGallery" role="button" data-slide="next">
+<span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+
+
+
+</div>
+ 
+    </div>
+    </div></div>    
+
+
+
+
+
+        <!--modal body-->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2Label" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content" style="width:635px;">
+  <div class="modal-header">
+  
+  <button type="button" class="close" data-dismiss="modal" title="Close">
+  <span class="glyphicon glyphicon-remove"></span></button>
+  </div>
+  <div class="modal-body">
+
+    <div id="scanews" class="carousel slide" data-interval="false">
+      <div class="carousel-inner"></div>
+      
+      <!-- Previous and Next buttons-->
+      <a class="left carousel-control" href="#scanews" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span></a> 
+      <a class="right carousel-control" href="#scanews" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span></a>
+      </div>
+        
+  
+  
+  </div>
+   
+      </div>
+      </div></div>    
+
+ 
+        
+        
+         
+            </div> 
+      </div>
+<script>
+            var group= [{
+              caption: "اليوم الرياضي الوطني",
+              imgUrl: "thanks-for-sports-day.png",
+        
+          },
+          {
+            caption: " فعالية ريوقي",
+              imgUrl: "ryogi.png",
+              
+          },
+          {
+            caption: "زيارة صرح زايد المؤسس",
+              imgUrl: "zayed-visit.png",
+              
+          },
+      
+          ];
+
+          for (var i=0; i < group.length ; i++){
+         
+            $("#myGallery .carousel-inner").append(
+
+             '<div class="item">'+
+             '<img src="'+group[i].imgUrl+'" alt="item-'+i+'" style="height:900px;width:600px;">'+
+             '<div class="carousel-caption">'+ group[i].caption+
+              '</div></div>');
+
+ 
+
+          
+
+          $("#myGallery .carousel-inner .item").eq(0).addClass("active");
+          $(".list-inline.events").append('<li><a href="#myGallery"data-slide-to="'+i+'"><img class="img-thumbnail" src="'+group[i].imgUrl+'" data-toggle="modal" data-target="#myModal"  ></a></li>');
+             }
+
+
+
+             var groupNews= [{
+              caption:  "تعاون بين هيئة الأوراق المالية والسلع و غرفة تجارة و صناعة عجمان",
+              imgUrl: "ajman.png",
+        
+          },
+          {
+            caption: "تعاون بين الأوراق المالية و ناسداك دبي لنشر التوعي بين المستثمرين بشأن تداول المشتقات",
+              imgUrl: "nasdak.png",
+              
+          },
+          {
+            caption: "تعاون مع اتحاد هيئات الأوراق المالية العربية لتنظيم برنامج تدريبي لتأهيل العاملين في القاع المالي",
+              imgUrl: "training.png",
+              
+          },
+      
+          ];
+
+
+          for (var i=0; i < groupNews.length ; i++){
+         
+         $("#scanews .carousel-inner").append(
+
+          '<div class="item">'+
+          '<img src="'+groupNews[i].imgUrl+'" alt="item-'+i+'" style="height:900px;width:600px; display:block;">'+
+          '<div class="carousel-caption">'+ groupNews[i].caption+
+           '</div></div>');
+
+
+
+           $("#scanews .carousel-inner .item").eq(0).addClass("active");
+
+         $(".list-inline.news").append('<li><a href="#scanews" data-slide-to="'+i+'"><img class="img-thumbnail" src="'+groupNews[i].imgUrl+'" data-toggle="modal" data-target="#myModal2"></a></li>');
+          }
+
+
+          // $(document).on("click", ".img-thumbnail",function(e){
+
+          
+
+          // });
+            
+
+          </script>
